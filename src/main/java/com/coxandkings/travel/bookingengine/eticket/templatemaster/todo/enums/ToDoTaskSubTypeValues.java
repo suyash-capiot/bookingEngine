@@ -1,0 +1,5 @@
+package com.coxandkings.travel.bookingengine.eticket.templatemaster.todo.enums;
+
+public enum ToDoTaskSubTypeValues {
+  BOOKING, FEEDBACK, COMPLAINT, INDENT, IMPREST, QUOTATION, ENQUIRY, WAIVEOFF, REFUND, TRANSFERFUND, RECON, BANKFUND, BARTER, GIFTVOUCHER, CLIENTSETTLEMENT, SUPPLIERSETTLEMENT
+}

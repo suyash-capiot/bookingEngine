@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<properties>
+		<property name="filePrefix">booking-engine</property>
+	</properties>
+	<appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] [%t] %trkctx %c{1} - %m%n"/>
+		</Console>
+		<RollingFile name="RollingFile" fileName="${sys:catalina.base}/logs/${filePrefix}-${date:yyyy-MM-dd}.log" filePattern="${sys:catalina.base}/logs/${filePrefix}-%d{yyyy-MM-dd}.log.%i">
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] %trkctx %c{1}:%L - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy /><!-- Rotated everyday -->
+				<SizeBasedTriggeringPolicy size="25 MB"/> <!-- Or every 100 MB -->
+			</Policies>
+			<DefaultRolloverStrategy max="100"/>
+		</RollingFile>
+	</appenders>
+	<loggers>
+		<root level="info">
+			<appender-ref ref="console"/>
+		</root>
+	    <Logger name="com.coxandkings.travel.bookingengine" level="trace" additivity="false">
+	      	<appender-ref ref="RollingFile" />
+	      	<!-- appender-ref ref="console" / -->
+	    </Logger>
+	</loggers>
+</configuration>
